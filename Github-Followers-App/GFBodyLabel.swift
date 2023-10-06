@@ -1,5 +1,5 @@
 //
-//  GFTitle.swift
+//  GFBodyLabel.swift
 //  Github-Followers-App
 //
 //  Created by Bahittin on 6.10.2023.
@@ -7,8 +7,8 @@
 
 import UIKit
 
-class GFTitle: UILabel {
-
+class GFBodyLabel: UILabel {
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -18,18 +18,18 @@ class GFTitle: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(textAligment: NSTextAlignment, fontSize: CGFloat) {
+    init(textAligment: NSTextAlignment) {
         super.init(frame: .zero)
         self.textAlignment = textAligment
-        self.font = .systemFont(ofSize: fontSize, weight: .bold)
         configure()
     }
     
     private func configure() {
         textColor = .label
+        font = .preferredFont(forTextStyle: .body)
         adjustsFontSizeToFitWidth = true
-        minimumScaleFactor = 0.9
-        lineBreakMode = .byTruncatingTail
+        minimumScaleFactor = 0.75
+        lineBreakMode = .byWordWrapping
         translatesAutoresizingMaskIntoConstraints = false
     }
 }
