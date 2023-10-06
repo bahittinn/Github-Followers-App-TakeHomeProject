@@ -13,36 +13,39 @@ class NetworkManager {
     
     private init() {}
     
-    func getFollowers(for username: String, page: Int, completion: @escaping ([Follower]?, String?) -> Void) {
-        let endpoint = "\(baseUrl)/users/\(username)/followers?per_page=100&page\(page)"
+    func getFollowers(for username: String, page: Int, completion: @escaping ([Follower]?, ErrorMessage) -> Void) {
+        let endpoint = "\(baseUrl)/users/\(username)/followers?per_page=100&page=\(page)"
         
         guard let url = URL(string: endpoint) else {
-            completion(nil, "This username created an invalid request. Please try again.")
+            completion(nil, .invalidUserName)
             return
         }
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             
             if let _ = error {
-                completion(nil, "Unable to complete your request. Please check your internet connection")
+                completion(nil, .unableToComplete)
             }
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                completion(nil, "Invalid response from the server. Please try again.")
+                completion(nil, .invalidResponse)
                 return
             }
             
             guard let data = data else {
-                completion(nil, "The data received from server was invalid. Please try again")
+                completion(nil, .invalidData)
                 return
             }
             
             do {
-                let jsonData = try JSONDecoder().decode([Follower].self, from: data)
-                print("jsondata \(jsonData)")
-                completion(jsonData, "Data recevied")
+                
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let followeres = try decoder.decode([Follower].self, from: data)
+                completion(followeres, .success)
+                
             } catch {
-                completion(nil, "Error from the catch data")
+                completion(nil, .invalidData)
             }
         }
         
