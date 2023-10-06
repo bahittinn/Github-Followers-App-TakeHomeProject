@@ -18,4 +18,13 @@ class FollowersListVC: UIViewController {
         navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.prefersLargeTitles = true
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    func getFollowers() {
+        NetworkManager.shared.getFollowers(for: "", page: <#T##Int#>, completion: <#T##([Follower]?, String?) -> Void#>)
+    }
 }
