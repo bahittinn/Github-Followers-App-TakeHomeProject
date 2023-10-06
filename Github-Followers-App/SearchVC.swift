@@ -8,14 +8,16 @@
 import UIKit
 
 class SearchVC: UIViewController {
-
+    
     let logoImageView = UIImageView()
     let usernameTextField = GFTextfield()
     let callToActionButton = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
     
+    var isUserNameEntered: Bool {  return !usernameTextField.text!.isEmpty }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .systemBackground
         
         configureLogoImageView()
@@ -28,7 +30,7 @@ class SearchVC: UIViewController {
         navigationController?.isNavigationBarHidden = true
     }
     
-//MARK: - ConfigureUI
+    //MARK: - ConfigureUI
     
     func createDismissKeyboardTapGesture() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(dissmissKeyboard))
@@ -41,6 +43,12 @@ class SearchVC: UIViewController {
     }
     
     @objc func pushFollowerListVC() {
+        
+        guard isUserNameEntered else {
+            print("No Username")
+            return
+        }
+        
         let followersListVC = FollowersListVC()
         followersListVC.username = usernameTextField.text
         followersListVC.title = usernameTextField.text
