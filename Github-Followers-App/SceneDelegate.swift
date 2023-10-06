@@ -45,9 +45,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UITabBar.appearance().scrollEdgeAppearance = tabbarApperance
         UITabBar.appearance().tintColor = .systemGreen
         
-        let navigationBarApparance = UINavigationBarAppearance()
-        navigationBarApparance.configureWithOpaqueBackground()
-        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarApparance
+//        let navigationBarApparance = UINavigationBarAppearance()
+//        navigationBarApparance.configureWithOpaqueBackground()
+//        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarApparance
         
         tabbar.viewControllers = [createSearchNC(), createFavoritesNC()]
         

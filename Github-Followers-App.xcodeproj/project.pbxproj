@@ -16,6 +16,7 @@
 		6499537F2ACED60A003EE26B /* FavoritesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6499537E2ACED60A003EE26B /* FavoritesListVC.swift */; };
 		649953812ACED9AD003EE26B /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649953802ACED9AD003EE26B /* GFButton.swift */; };
 		649953832ACEE837003EE26B /* GFTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649953822ACEE837003EE26B /* GFTextfield.swift */; };
+		649953852ACFE2FE003EE26B /* FollowersListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649953842ACFE2FE003EE26B /* FollowersListVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		6499537E2ACED60A003EE26B /* FavoritesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListVC.swift; sourceTree = "<group>"; };
 		649953802ACED9AD003EE26B /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
 		649953822ACEE837003EE26B /* GFTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextfield.swift; sourceTree = "<group>"; };
+		649953842ACFE2FE003EE26B /* FollowersListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersListVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				6499537E2ACED60A003EE26B /* FavoritesListVC.swift */,
 				649953802ACED9AD003EE26B /* GFButton.swift */,
 				649953822ACEE837003EE26B /* GFTextfield.swift */,
+				649953842ACFE2FE003EE26B /* FollowersListVC.swift */,
 			);
 			path = "Github-Followers-App";
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			files = (
 				6499537C2ACED5F9003EE26B /* SearchVC.swift in Sources */,
 				6499536C2ACED50F003EE26B /* ViewController.swift in Sources */,
+				649953852ACFE2FE003EE26B /* FollowersListVC.swift in Sources */,
 				649953832ACEE837003EE26B /* GFTextfield.swift in Sources */,
 				649953812ACED9AD003EE26B /* GFButton.swift in Sources */,
 				6499537F2ACED60A003EE26B /* FavoritesListVC.swift in Sources */,
