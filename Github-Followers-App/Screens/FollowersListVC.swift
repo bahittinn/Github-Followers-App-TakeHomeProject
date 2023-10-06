@@ -27,14 +27,13 @@ class FollowersListVC: UIViewController {
     }
     
     func getFollowers() {
-        NetworkManager.shared.getFollowers(for: username, page: 1) { followers, errorMessage in
-            guard let followers = followers else {
-                self.presentGFAlertOnMainThread(title: "Bad stuff happened", message: errorMessage.rawValue, buttonTitle: "Ok")
-                return
+        NetworkManager.shared.getFollowers(for: username, page: 1) { response in
+            switch response {
+            case .success(let followers):
+                print("Followers : \(followers)")
+            case .failure(let error):
+                self.presentGFAlertOnMainThread(title: "Bad stuff happened", message: error.rawValue, buttonTitle: "Ok")
             }
-            
-            print("Followers count : \(followers.count)")
-            print("Followers : \(followers)")
         }
     }
 }
