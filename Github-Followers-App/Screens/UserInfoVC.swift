@@ -13,7 +13,27 @@ class UserInfoVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(follower.login)
+        title = follower.login
         view.backgroundColor = .systemBackground
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
+        
+        navigationItem.rightBarButtonItem = doneButton
+        
+        getUserInfo()
+    }
+    
+    func getUserInfo() {
+        NetworkManager.shared.getUserInfo(for: follower.login) { response in
+            switch response {
+            case .success(let user):
+                print(user)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    @objc func dismissVC() {
+        dismiss(animated: true)
     }
 }
