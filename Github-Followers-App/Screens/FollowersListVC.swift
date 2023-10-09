@@ -9,6 +9,7 @@ import UIKit
 
 class FollowersListVC: UIViewController {
     
+    //MARK: - VARIABLES
     enum Section {
         case main
     }
@@ -21,6 +22,7 @@ class FollowersListVC: UIViewController {
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
     
+    //MARK: - LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
@@ -28,6 +30,7 @@ class FollowersListVC: UIViewController {
         
         getFollowers(username: username, page: page)
         configureDataSource()
+        configureSearchController()
         
     }
     
@@ -36,31 +39,7 @@ class FollowersListVC: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
-    func getFollowers(username: String, page: Int) {
-        showLoadingView()
-        NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] response in
-            guard let self = self else { return }
-            self.dismissLoadingView()
-            switch response {
-            case .success(let followers):
-                if followers.count < 100 { self.hasMoreFollowers = false }
-                                
-                if self.followers.isEmpty {
-                    DispatchQueue.main.async {
-                        let message = "This user doesn't have any followers. Go follow them."
-                        self.showEmptyStateView(with: message, in: self.view)
-                        return
-                    }
-                }
-                
-                self.followers.append(contentsOf: followers)
-                self.updateData()
-            case .failure(let error):
-                self.presentGFAlertOnMainThread(title: "Bad stuff happened", message: error.rawValue, buttonTitle: "Ok")
-            }
-        }
-    }
-    
+    //MARK: -  CONFIGURE UI
     func configureViewController() {
         view.backgroundColor = .systemBackground
         navigationController?.isNavigationBarHidden = false
@@ -84,6 +63,41 @@ class FollowersListVC: UIViewController {
         })
     }
     
+    func configureSearchController() {
+        let searchController = UISearchController()
+        searchController.searchResultsUpdater                 = self
+        searchController.searchBar.placeholder                = "Search for a username"
+        searchController.obscuresBackgroundDuringPresentation = true
+        navigationItem.searchController                       = searchController
+        navigationItem.hidesSearchBarWhenScrolling            = false
+    }
+    
+    //MARK: - DATA
+    func getFollowers(username: String, page: Int) {
+        showLoadingView()
+        NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] response in
+            guard let self = self else { return }
+            self.dismissLoadingView()
+            switch response {
+            case .success(let followers):
+                if followers.count < 100 { self.hasMoreFollowers = false }
+                                
+                if followers.isEmpty {
+                    DispatchQueue.main.async {
+                        let message = "This user doesn't have any followers. Go follow them."
+                        self.showEmptyStateView(with: message, in: self.view)
+                        return
+                    }
+                }
+                
+                self.followers.append(contentsOf: followers)
+                self.updateData()
+            case .failure(let error):
+                self.presentGFAlertOnMainThread(title: "Bad stuff happened", message: error.rawValue, buttonTitle: "Ok")
+            }
+        }
+    }
+    
     func updateData() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
         snapshot.appendSections([.main])
@@ -95,6 +109,7 @@ class FollowersListVC: UIViewController {
     }
 }
 
+//MARK: -  DELEGATES
 extension FollowersListVC: UICollectionViewDelegate {
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -107,5 +122,11 @@ extension FollowersListVC: UICollectionViewDelegate {
             page += 1
             getFollowers(username: username, page: 2)
         }
+    }
+}
+
+extension FollowersListVC: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        
     }
 }
