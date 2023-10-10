@@ -9,6 +9,8 @@ import UIKit
 
 class UserInfoVC: UIViewController {
 
+    let headerView = UIView()
+    
     var follower: Follower!
     
     override func viewDidLoad() {
@@ -31,6 +33,19 @@ class UserInfoVC: UIViewController {
                 print(error)
             }
         }
+    }
+    
+    func layoutUI() {
+        view.addSubview(headerView)
+        
+        headerView.backgroundColor = .lightGray
+        
+        NSLayoutConstraint.activate([
+            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            headerView.heightAnchor.constraint(equalToConstant: 180)
+        ])
     }
     
     @objc func dismissVC() {
