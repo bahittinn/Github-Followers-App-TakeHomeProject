@@ -15,7 +15,6 @@ class UserInfoVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = follower.login
         view.backgroundColor = .systemBackground
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
         
@@ -28,24 +27,36 @@ class UserInfoVC: UIViewController {
         NetworkManager.shared.getUserInfo(for: follower.login) { response in
             switch response {
             case .success(let user):
-                print(user)
+                
+                DispatchQueue.main.async {
+                    self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
+                }
+                
             case .failure(let error):
-                print(error)
+                self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
             }
         }
+        layoutUI()
     }
     
     func layoutUI() {
         view.addSubview(headerView)
+        headerView.translatesAutoresizingMaskIntoConstraints = false
         
-        headerView.backgroundColor = .lightGray
         
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 180)
         ])
+    }
+    
+    func add(childVC: UIViewController, to containterView: UIView) {
+        addChild(childVC)
+        containterView.addSubview(childVC.view)
+        childVC.view.frame = containterView.bounds
+        childVC.didMove(toParent: self)
     }
     
     @objc func dismissVC() {
