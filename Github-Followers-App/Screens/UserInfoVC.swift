@@ -30,6 +30,8 @@ class UserInfoVC: UIViewController {
                 
                 DispatchQueue.main.async {
                     self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
+                    self.add(childVC: GFRepoItemVC(user: user), to: self.itemViewOne)
+                    self.add(childVC: GFFollowerItem(user: user), to: self.itemViewTwo)
                 }
                 
             case .failure(let error):
@@ -46,22 +48,19 @@ class UserInfoVC: UIViewController {
     }
     
     func layoutUI() {
-        var itemViews = [headerView, itemViewOne, itemViewTwo]
+        let itemViews = [headerView, itemViewOne, itemViewTwo]
         
         for itemView in itemViews {
             view.addSubview(itemView)
             itemView.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        itemViewOne.backgroundColor = .systemPink
-        itemViewTwo.backgroundColor = .blue
-        
         headerView.translatesAutoresizingMaskIntoConstraints  = false
         itemViewOne.translatesAutoresizingMaskIntoConstraints = false
         itemViewTwo.translatesAutoresizingMaskIntoConstraints = false
         
         let padding:CGFloat = 20
-        let itemHeight: CGFloat = 180
+        let itemHeight: CGFloat = 150
         
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
