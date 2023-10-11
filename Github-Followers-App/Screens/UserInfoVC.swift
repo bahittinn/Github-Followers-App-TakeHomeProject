@@ -8,19 +8,17 @@
 import UIKit
 
 class UserInfoVC: UIViewController {
-
+    
     let headerView = UIView()
     let itemViewOne = UIView()
     let itemViewTwo = UIView()
+    var itemVies: [UIView] = []
     
     var follower: Follower!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
-        
-        navigationItem.rightBarButtonItem = doneButton
+        configureViewController()
         
         getUserInfo()
     }
@@ -41,10 +39,23 @@ class UserInfoVC: UIViewController {
         layoutUI()
     }
     
+    func configureViewController() {
+        view.backgroundColor = .systemBackground
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
+        navigationItem.rightBarButtonItem = doneButton
+    }
+    
     func layoutUI() {
-        view.addSubview(headerView)
-        view.addSubview(itemViewOne)
-        view.addSubview(itemViewTwo)
+        var itemViews = [headerView, itemViewOne, itemViewTwo]
+        
+        for itemView in itemViews {
+            view.addSubview(itemView)
+            itemView.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
+        itemViewOne.backgroundColor = .systemPink
+        itemViewTwo.backgroundColor = .blue
+        
         headerView.translatesAutoresizingMaskIntoConstraints  = false
         itemViewOne.translatesAutoresizingMaskIntoConstraints = false
         itemViewTwo.translatesAutoresizingMaskIntoConstraints = false
