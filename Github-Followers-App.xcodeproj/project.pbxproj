@@ -38,6 +38,7 @@
 		6499539C2AD04107003EE26B /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6499539B2AD04107003EE26B /* ErrorMessage.swift */; };
 		6499539F2AD09290003EE26B /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6499539E2AD09290003EE26B /* FollowerCell.swift */; };
 		649953A12AD092D7003EE26B /* GFAvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649953A02AD092D7003EE26B /* GFAvatarImageView.swift */; };
+		64FB617C2AD80E6900847ACE /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB617B2AD80E6900847ACE /* PersistanceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		6499539B2AD04107003EE26B /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		6499539E2AD09290003EE26B /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 		649953A02AD092D7003EE26B /* GFAvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAvatarImageView.swift; sourceTree = "<group>"; };
+		64FB617B2AD80E6900847ACE /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				649953982AD02F79003EE26B /* NetworkManager.swift */,
+				64FB617B2AD80E6900847ACE /* PersistanceManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				6499539F2AD09290003EE26B /* FollowerCell.swift in Sources */,
 				643336C82AD696ED00E80AAD /* GFItemInfoView.swift in Sources */,
 				6499539C2AD04107003EE26B /* ErrorMessage.swift in Sources */,
+				64FB617C2AD80E6900847ACE /* PersistanceManager.swift in Sources */,
 				649953A12AD092D7003EE26B /* GFAvatarImageView.swift in Sources */,
 				643336C22AD4191C00E80AAD /* GFUserInfoHeaderVC.swift in Sources */,
 				649953872ACFE994003EE26B /* GFTitleLabel.swift in Sources */,
