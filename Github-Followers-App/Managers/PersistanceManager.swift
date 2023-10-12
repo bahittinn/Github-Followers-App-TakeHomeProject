@@ -14,7 +14,30 @@ enum PersistanceManager {
         static let favorites = "favorites"
     }
     
-    static func retrieveFavorites(completed: @escaping (Result<[Follower], GFError>) -> Void) {
-        guard let fovoritesData = defaults.object(forKey: Keys.favorites) as? Data else { return }
+    static func retrieveFavorites(completion: @escaping (Result<[Follower], GFError>) -> Void) {
+        guard let favoritesData = defaults.object(forKey: Keys.favorites) as? Data else {
+            completion(.success([]))
+            return
+        }
+        
+        do {
+            let decoder = JSONDecoder()
+            let favorites = try decoder.decode([Follower].self, from: favoritesData)
+            completion(.success(favorites))
+        } catch {
+            completion(.failure(.unableToFavorite))
+        }
+    }
+    
+    static func save(favorites: [Follower]) -> GFError? {
+        
+        do {
+            let encoder = JSONEncoder()
+            let encodedFavorites = try encoder.encode(favorites)
+            defaults.set(encodedFavorites, forKey: Keys.favorites)
+            return nil
+        } catch {
+            return .unableToFavorite
+        }
     }
 }
