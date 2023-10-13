@@ -30,6 +30,7 @@ class FollowersListVC: UIViewController {
     
     //MARK: - LIFE CYCLE
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         configureCollectionView()
         configureViewController()
