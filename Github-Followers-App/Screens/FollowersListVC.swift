@@ -133,7 +133,7 @@ class FollowersListVC: UIViewController {
                     guard let self = self else { return }
                     
                     guard let error = error else {
-                        self.presentGFAlertOnMainThread(title: "Sucess", message: "You have successfully favorite this user", buttonTitle: "Ok")
+                        self.presentGFAlertOnMainThread(title: "Success", message: "You have successfully favorite this user", buttonTitle: "Ok")
                         return
                     }
                     

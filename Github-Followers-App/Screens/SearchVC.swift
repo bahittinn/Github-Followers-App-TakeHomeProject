@@ -43,7 +43,10 @@ class SearchVC: UIViewController {
     }
     
     @objc func pushFollowerListVC() {
-        
+        pushNextVC()
+    }
+    
+    func pushNextVC() {
         guard isUserNameEntered else {
             presentGFAlertOnMainThread(title: "Empty UserName", message: "Please enter a username. We need to know who to look for ", buttonTitle: "Ok")
             return
@@ -97,7 +100,7 @@ class SearchVC: UIViewController {
 
 extension SearchVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("return")
+        pushNextVC()
         return true
     }
 }
