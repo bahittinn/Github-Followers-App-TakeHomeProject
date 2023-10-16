@@ -142,6 +142,7 @@
 		642E519D2AD33AD500E0C1C3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				64FB61822ADB170F00847ACE /* GFAlertContainerView.swift */,
 				642E519E2AD33B0900E0C1C3 /* GFEmptyStateView.swift */,
 				643336C72AD696ED00E80AAD /* GFItemInfoView.swift */,
 			);
@@ -161,7 +162,6 @@
 		6499535B2ACED50F003EE26B = {
 			isa = PBXGroup;
 			children = (
-				64FB61822ADB170F00847ACE /* GFAlertContainerView.swift */,
 				649953662ACED50F003EE26B /* Github-Followers-App */,
 				649953652ACED50F003EE26B /* Products */,
 			);
