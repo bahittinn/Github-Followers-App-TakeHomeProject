@@ -91,4 +91,29 @@ class NetworkManager {
         
         task.resume()
     }
+    
+    func downloadImage(from urlString: String, completion: @escaping (UIImage?) -> Void) {
+        let cacheKey = NSString(string: urlString)
+        if let image = cache.object(forKey: cacheKey) {
+            completion(image)
+            return
+        }
+        
+        guard let url = URL(string: urlString) else {
+            completion(nil)
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, _ , error in
+            guard let self = self else { return }
+            
+            if error != nil { return }
+            guard let data = data else { return }
+            
+            guard let image = UIImage(data: data) else { return }
+            self.cache.setObject(image, forKey: cacheKey)
+            completion(image)
+        }
+        task.resume()
+    }
 }
