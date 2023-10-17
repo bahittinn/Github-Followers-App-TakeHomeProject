@@ -42,6 +42,7 @@
 		64FB617E2AD985EE00847ACE /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB617D2AD985EE00847ACE /* FavoriteCell.swift */; };
 		64FB61812ADAF93F00847ACE /* GFTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB61802ADAF93F00847ACE /* GFTabBarController.swift */; };
 		64FB61832ADB170F00847ACE /* GFAlertContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB61822ADB170F00847ACE /* GFAlertContainerView.swift */; };
+		64FB61B42ADE77EF00847ACE /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB61B32ADE77EF00847ACE /* UIView+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		64FB617D2AD985EE00847ACE /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		64FB61802ADAF93F00847ACE /* GFTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTabBarController.swift; sourceTree = "<group>"; };
 		64FB61822ADB170F00847ACE /* GFAlertContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertContainerView.swift; sourceTree = "<group>"; };
+		64FB61B32ADE77EF00847ACE /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 				6499538C2AD00575003EE26B /* UIViewController+Ext.swift */,
 				643336D02AD6C16800E80AAD /* Date+Ext.swift */,
 				643336D22AD6C17600E80AAD /* String+Ext.swift */,
+				64FB61B32ADE77EF00847ACE /* UIView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64FB61B42ADE77EF00847ACE /* UIView+Ext.swift in Sources */,
 				649953962AD0187A003EE26B /* User.swift in Sources */,
 				6499537C2ACED5F9003EE26B /* SearchVC.swift in Sources */,
 				6499538D2AD00575003EE26B /* UIViewController+Ext.swift in Sources */,
