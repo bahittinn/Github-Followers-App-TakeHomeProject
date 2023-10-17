@@ -31,6 +31,7 @@ class FavoritesListVC: UIViewController {
         tableView.rowHeight = 80
         tableView.delegate   = self
         tableView.dataSource = self
+        tableView.removeExcessCells()
         tableView.register(FavoriteCell.self, forCellReuseIdentifier: FavoriteCell.reuseID)
     }
     
