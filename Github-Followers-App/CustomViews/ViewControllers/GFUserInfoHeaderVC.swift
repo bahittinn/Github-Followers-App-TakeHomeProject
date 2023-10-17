@@ -8,7 +8,7 @@
 import UIKit
 
 class GFUserInfoHeaderVC: UIViewController {
-
+    
     let avatarImageView    = GFAvatarImageView(frame: .zero)
     let usernameLabel      = GFTitleLabel(textAligment: .left, fontSize: 34)
     let nameLabel          = GFSecondaryTitleLabel(fontSize: 18)
@@ -56,12 +56,7 @@ class GFUserInfoHeaderVC: UIViewController {
     }
     
     func addSubviews() {
-        view.addSubview(avatarImageView)
-        view.addSubview(usernameLabel)
-        view.addSubview(nameLabel)
-        view.addSubview(locationImageView)
-        view.addSubview(locationLabel)
-        view.addSubview(bioLabel)
+        view.addSubviews(avatarImageView, usernameLabel, nameLabel, locationLabel, locationImageView, bioLabel)
     }
     
     func layoutUI() {
