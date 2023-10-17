@@ -27,12 +27,5 @@ class GFAvatarImageView: UIImageView {
         image              = placeHolderImage
         translatesAutoresizingMaskIntoConstraints = false
     }
-    
-    func downloadImageFromUrl(from urlString: String) {
-        NetworkManager.shared.downloadImage(from: urlString) { image in
-            DispatchQueue.main.async {
-                self.image = image
-            }
-        }
-    }
+ 
 }
