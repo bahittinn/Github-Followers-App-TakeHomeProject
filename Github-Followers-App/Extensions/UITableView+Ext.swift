@@ -8,6 +8,12 @@
 import UIKit
 
 extension UITableView {
+    func reloadTableViewMainThread() {
+        DispatchQueue.main.async {
+            self.reloadData()
+        }
+    }
+    
     func removeExcessCells() {
         tableFooterView = UIView(frame: .zero)
     }

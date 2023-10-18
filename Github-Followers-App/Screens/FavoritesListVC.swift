@@ -49,11 +49,13 @@ class FavoritesListVC: UIViewController {
                 if favorites.isEmpty {
                     self.showEmptyStateView(with: "No Favorites", in: self.view)
                 } else {
-                    DispatchQueue.main.async {
-                        self.favorites = favorites
-                        self.tableView.reloadData()
-                        self.view.bringSubviewToFront(self.tableView)
-                    }
+                    self.favorites = favorites
+                    self.tableView.reloadTableViewMainThread()
+//                    DispatchQueue.main.async {
+//                        self.favorites = favorites
+//                        self.tableView.reloadData()
+//                        self.view.bringSubviewToFront(self.tableView)
+//                    }
                 }
                 
             case .failure(let error):
